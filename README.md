@@ -1,39 +1,59 @@
-# Example app with [chakra-ui](https://github.com/chakra-ui/chakra-ui) and TypeScript
+# Hyperspace Frontend Take Home Test
 
-This example features how to use [chakra-ui](https://github.com/chakra-ui/chakra-ui) as the component library within a Next.js app with TypeScript.
+Hello Hyperspace cadet!
 
-Next.js and chakra-ui have built-in TypeScript declarations, so we'll get autocompletion for their modules straight away.
+This is the take home test that we use to let you showcase your frontend skills. This README will provide some helpful links for you to use as you build out your solution as well as general guidance on what we are looking for.
 
-We are connecting the Next.js `_app.js` with `chakra-ui`'s Provider and theme so the pages can have app-wide dark/light mode. We are also creating some components which shows the usage of `chakra-ui`'s style props.
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-chakra-ui)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-chakra-ui-typescript&project-name=with-chakra-ui&repository-name=with-chakra-ui)
-
-## How to use
-
-### Using `create-next-app`
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+## Running the frontend
 
 ```bash
-npx create-next-app --example with-chakra-ui with-chakra-ui-app
+yarn install
+yarn start (app should come up on localhost:3000)
 ```
 
-```bash
-yarn create next-app --example with-chakra-ui with-chakra-ui-app
-```
+## Getting started
 
-```bash
-pnpm create next-app --example with-chakra-ui with-chakra-ui-app
-```
+1. Make sure that you are on your own branch of this repo. Your branch name should be named `[your-name]-candidate`. You should **NOT** be commiting/pushing code directly to the `main` branch. So, double check that before pushing any changes.
+2. You will be utilizing the Hyperspace SDK/API to build out your solution. The docs can be found [here](https://docs.hyperspace.xyz/hype/developer-guide/overview). The main APIs you will be using will be found in this [section](https://docs.hyperspace.xyz/hype/developer-guide/api-calls)
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## The codebase
 
-## Notes
+As you will notice, the codebase is pretty bare bones. It is a NextJS + Typescript repo, utilizing ChakraUI as the component and themeing library.
 
-Chakra has supported Gradients and RTL in `v1.1`. To utilize RTL, [add RTL direction and swap](https://chakra-ui.com/docs/features/rtl-support).
+[ChakraUI Docs](https://chakra-ui.com/docs/components)
+[NextJS Docs](https://nextjs.org/docs/getting-started)
 
-If you don't have multi-direction app, you should make `<Html lang="ar" dir="rtl">` inside `_document.ts`.
+There is only one page that the react application is rendering right now and it is the root path `/` found here `src/pages/index.tsx`.
+
+You will see the Hyperspace client being initialized here and some other building blocks that we set in place like our logo in the top left and the dark/light mode toggle. Other than that it is empty.
+
+There is a `theme.tsx` file in the repo that is part of the chakraUI themeing system. It is what you should use to add new colors and other CSS properties to your theme. This is also where you go to make sure you have support for both dark and light modes if you choose to support both ;).
+
+## Your Task
+
+Your goal for this take home test is to utilize the data available to you via our Hyperspace API to build out a frontend experience for us to review together. What that experience is, is up to you.
+
+We have intentionally left this application as empty as possible because we don't want to influence what you end up building.
+
+Some things we will be looking for/evaluating when we read your final code submittion are as follows (this list is not exhaustive)
+
+- Code organization/structure
+- Code modularity
+- Frontend styling
+- Overall UX of solution
+
+Extra points/nice to haves
+
+- Support for both dark/light mode: If you want to just build for one color mode that is fine.
+- Animations
+- High fidelity styling of frontend: This is a frontend take home after all. You don't have to be a master designer but having a good design sense of what looks good and what doesn't as your building is important for every FE Engineer
+
+To get some inspiration of what to build just visit [Hyperspace](https://hyperspace.xyz). Our API can be used to build everything on our landing page although we ideally don't want you to just rebuild what we have on Hyperspace. Be creative. You can draw inspiration from Hyperspace but try to be unique with how you use our data to present your solution.
+
+## How to Submit
+
+1. Throughout your exercise you should be commiting and pushing code often to your branch. This makes it easier for us to review how you break up your building.
+2. Once you have your frontend finalized and are happy with your solution. Open up a Pull Request for your branch into `main` and tag the following people as reviewers `0xAlwaysDumpling`, `cieltan`, and `dre-draws`
+3. Sit back and relax. We will review your submition and will follow up with you to set up a time for us to go through your solution together!
+
+If you have any questions during your take home or are blocked from making progress for any reason please reach out to `adriano@hyperspace.xyz`.
