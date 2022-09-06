@@ -50,6 +50,14 @@ Extra points/nice to haves
 
 To get some inspiration of what to build just visit [Hyperspace](https://hyperspace.xyz). Our API can be used to build everything on our landing page although we ideally don't want you to just rebuild what we have on Hyperspace. Be creative. You can draw inspiration from Hyperspace but try to be unique with how you use our data to present your solution.
 
+
+## Ideas
+Here are some ideas of what you can build if you want somewhere to start. Again these are ideas and they do not have to be feature complete
+- Collections page, allowing users to explore collections on hyperspace (e.g. Popular collection etc)
+- Social feed / activity feed (e.g. can be a small window / feed)
+- User notifications, what would user notifications look like on hyperspace 
+- Any sort of dashboard analytics / charting with our stats data that you find interesting
+
 ## How to Submit
 
 1. Throughout your exercise you should be commiting and pushing code often to your branch. This makes it easier for us to review how you break up your building.
