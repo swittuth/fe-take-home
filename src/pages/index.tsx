@@ -5,8 +5,7 @@ import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import HypeLogo from "../components/HypeLogo";
 import { HyperspaceClient } from "hyperspace-client-js";
 
-const clientApiKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZHJpYW5vIiwibmFtZSI6Ikh5cGVyc3BhY2UiLCJpYXQiOjE1MTYyMzkwMjJ9.NjoCxkNRUKh05tG9i1lacAdi9j6aku_V6ZIA8teOBKg";
+const clientApiKey = process.env.NEXT_PUBLIC_API_KEY;
 
 const Index = () => {
   const { colorMode } = useColorMode();
