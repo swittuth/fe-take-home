@@ -15,11 +15,12 @@ const Index = () => {
 
   return (
     <Container height="100vh">
-      <Flex w={"100%"} h={"80px"} alignItems={"center"} px={4}>
+      <Flex gap="10px" w={"100%"} h={"80px"} alignItems={"center"} px={4}>
         <HypeLogo
           fillColor={colorMode === "dark" ? "white" : "black"}
           height={30}
         />
+        <p>Take home assessment</p>
       </Flex>
 
       {/* Using our Hyperspace data, build out something cool for us to review together! */}
