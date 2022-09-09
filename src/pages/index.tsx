@@ -1,5 +1,5 @@
 import { Flex, useColorMode } from "@chakra-ui/react";
-
+import { useEffect } from "react";
 import { Container } from "../components/Container";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import HypeLogo from "../components/HypeLogo";
@@ -12,6 +12,22 @@ const Index = () => {
   const hyperClient = new HyperspaceClient(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJGRSBJbnRlcnZpZXciLCJuYW1lIjoiSHlwZXJzcGFjZSIsImlhdCI6MTUxNjIzOTAyMn0.HDfB97Y1pgQqQ6GshXsh5nz7fA1_ban9MTZDAbgobJk"
   );
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  async function getData() {
+    const result = await hyperClient
+      .getWalletStatsHist({
+        condition: {
+          searchAddress: "HGEj9nJHdAWJKMHGGHRnhvb3i1XakELSRTn5B4otmAhU",
+        },
+      })
+      .then((response) => response.getWalletStatsHist);
+
+    console.log(result);
+  }
 
   return (
     <Container height="100vh">
