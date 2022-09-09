@@ -18,10 +18,23 @@ const Index = () => {
   }, []);
 
   async function getData() {
+    // get wallet stats - overall stats specified with the timePeriod attribute value
+    const walletStats = await hyperClient.getWalletStats({
+      condition: {
+        searchAddress: "4ZCiGakZJy5aJsLpMBNBNwyrmNCCSCzukzhaPzzd4d7v",
+        includeUserRank: true,
+        timePeriod: "ALL",
+      },
+    });
+    // can display loading screen while fetch is being made
+    const resultWallStats = await walletStats.getWalletStats;
+    console.log("res wall stats", resultWallStats);
+
+    // get wallet stat history
     const result = await hyperClient
       .getWalletStatsHist({
         condition: {
-          searchAddress: "HGEj9nJHdAWJKMHGGHRnhvb3i1XakELSRTn5B4otmAhU",
+          searchAddress: "4ZCiGakZJy5aJsLpMBNBNwyrmNCCSCzukzhaPzzd4d7v",
         },
       })
       .then((response) => response.getWalletStatsHist);
