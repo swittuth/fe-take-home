@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { InfoContext } from "../../infocontext";
 import moment from "moment";
 import { Flex } from "@chakra-ui/react";
@@ -32,7 +32,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Chart.js Line Chart",
+      text: "Portfolio Value",
     },
   },
 };
@@ -48,17 +48,12 @@ export let data = {
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.5)",
     },
-    {
-      label: "Dataset 2",
-      data: labels.map(() => Math.random() * 1000),
-      borderColor: "rgb(53, 162, 235)",
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
-    },
   ],
 };
 
 export const Portfolio = () => {
   const { userAddress, hyperClient } = useContext(InfoContext);
+  const [renderData, setRenderData] = useState({});
 
   useEffect(() => {
     getWalletHistory();
@@ -76,28 +71,27 @@ export const Portfolio = () => {
 
     // register labels for Chartjs
     for (let data of resWalletHistory.wallet_stats_history) {
-      labels.push(moment.unix(data.timestamp).format("MMMM-DD-YYY"));
+      labels.push(moment.unix(data.timestamp).format("DD-MM"));
     }
-
-    console.log(labels);
+    labels.reverse();
 
     data = {
       labels,
       datasets: [
         {
           label: "Dataset 1",
-          data: labels.map(() => Math.random() * 1000),
+          data: labels.map(
+            (date, index) =>
+              resWalletHistory.wallet_stats_history[index].portfolio_value
+          ),
           borderColor: "rgb(255, 99, 132)",
           backgroundColor: "rgba(255, 99, 132, 0.5)",
-        },
-        {
-          label: "Dataset 2",
-          data: labels.map(() => Math.random() * 1000),
-          borderColor: "rgb(53, 162, 235)",
-          backgroundColor: "rgba(53, 162, 235, 0.5)",
+          tension: 0.5,
         },
       ],
     };
+
+    setRenderData(data);
 
     console.log(resWalletHistory);
   }
@@ -108,7 +102,7 @@ export const Portfolio = () => {
     <Flex
       height={"100%"}
       width="100%"
-      padding="5px"
+      padding="50px"
       alignItems={"center"}
       rounded="lg"
       background="#171A2799"
