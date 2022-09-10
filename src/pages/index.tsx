@@ -1,5 +1,5 @@
 import { Flex, useColorMode } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useEffect, createContext, useState } from "react";
 import { Container } from "../components/Container";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import HypeLogo from "../components/HypeLogo";
@@ -8,34 +8,29 @@ import {
   MarketPlaceActionEnum,
   NonMarketPlaceActionEnum,
 } from "hyperspace-client-js/dist/sdk";
+import { DashboardContainer } from "../components/DashboardContainer";
+import { InfoContext } from "../infocontext";
 
 const Index = () => {
   const { colorMode } = useColorMode();
-
+  const [userAddress, setUserAddress] = useState(
+    "4ZCiGakZJy5aJsLpMBNBNwyrmNCCSCzukzhaPzzd4d7v"
+  );
   // API client for accessing Hyperspace data
   const hyperClient = new HyperspaceClient(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJGRSBJbnRlcnZpZXciLCJuYW1lIjoiSHlwZXJzcGFjZSIsImlhdCI6MTUxNjIzOTAyMn0.HDfB97Y1pgQqQ6GshXsh5nz7fA1_ban9MTZDAbgobJk"
   );
 
   useEffect(() => {
-    getData();
+    // getData();
   }, []);
 
   async function getData() {
     // get wallet stats - overall stats specified with the timePeriod attribute value
-    // const walletStats = await hyperClient.getWalletStats({
-    //   condition: {
-    //     searchAddress: "4ZCiGakZJy5aJsLpMBNBNwyrmNCCSCzukzhaPzzd4d7v",
-    //     includeUserRank: true,
-    //     timePeriod: "ALL",
-    //   },
-    // });
-    // const resultWallStats = walletStats.getWalletStats;
-    // console.log("res wall stats", resultWallStats);
 
     const nmHistory = hyperClient.getNonMpaUserHistory({
       condition: {
-        userAddress: "DGobS8SQjHGqdf2Yrzq5mq86Vysy7EA8mt6f6tWUtFWe",
+        userAddress: "4ZCiGakZJy5aJsLpMBNBNwyrmNCCSCzukzhaPzzd4d7v",
         nonMpaActionTypes: [NonMarketPlaceActionEnum.Mint],
       },
     });
@@ -70,19 +65,12 @@ const Index = () => {
     // can also get data from user related to other details - get buyer's address
   }
 
+  // can do basic conditional rendering for charts / loading screen, etc.
   return (
-    <Container height="100vh">
-      <Flex gap="10px" w={"100%"} h={"80px"} alignItems={"center"} px={4}>
-        <HypeLogo
-          fillColor={colorMode === "dark" ? "white" : "black"}
-          height={30}
-        />
-        <p>Take home assessment</p>
-      </Flex>
-
-      {/* Using our Hyperspace data, build out something cool for us to review together! */}
-
-      <DarkModeSwitch />
+    <Container height="100vh" width="100vw" padding="10px">
+      <InfoContext.Provider value={{ userAddress, hyperClient }}>
+        <DashboardContainer height="100%" width="100%" />
+      </InfoContext.Provider>
     </Container>
   );
 };
