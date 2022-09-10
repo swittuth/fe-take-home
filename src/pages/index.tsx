@@ -42,7 +42,7 @@ const Index = () => {
       .getWalletStatsHist({
         condition: {
           searchAddress: "4ZCiGakZJy5aJsLpMBNBNwyrmNCCSCzukzhaPzzd4d7v",
-          dayLookback: "ONE_DAY",
+          dayLookback: "MONTH",
         },
       })
       .then((response) => response.getWalletStatsHist);

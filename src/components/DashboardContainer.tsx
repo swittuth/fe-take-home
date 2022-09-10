@@ -4,13 +4,14 @@ import { useContext } from "react";
 import { InfoContext } from "../infocontext";
 import { UserInfo } from "./dashboard/UserInfo";
 import { TransactionListing } from "./dashboard/TransactionListing";
+import { Portfolio } from "./dashboard/Portfolio";
 
 export const DashboardContainer = (props: GridProps) => {
   return (
     <Grid
       templateAreas={`
       "userInfo userInfo donutChart donutChart  minting minting minting"
-      "transaction transaction donutChart donutChart minting minting minting"
+      "userInfo userInfo donutChart donutChart minting minting minting"
       "transaction transaction portfolio portfolio portfolio portfolio portfolio"
       "transaction transaction portfolio portfolio portfolio portfolio portfolio"
       "transaction transaction portfolio portfolio portfolio portfolio portfolio"
@@ -26,7 +27,9 @@ export const DashboardContainer = (props: GridProps) => {
       <GridItem area={"transaction"}>
         <TransactionListing />
       </GridItem>
-      <GridItem area="portfolio">Portfolio</GridItem>
+      <GridItem area="portfolio">
+        <Portfolio />
+      </GridItem>
     </Grid>
   );
 };
