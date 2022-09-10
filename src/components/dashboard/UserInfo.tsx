@@ -22,13 +22,12 @@ export const UserInfo = () => {
     });
     const resultWallStats = walletStats.getWalletStats;
     setWalletInfo(resultWallStats.wallet_stats[0]);
-    console.log("res wall stats", resultWallStats);
   }
 
   return (
     <Flex
       w="100%"
-      h="100%"
+      h="10vh"
       flexDirection="column"
       rounded="lg"
       border="1px"
