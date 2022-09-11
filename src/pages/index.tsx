@@ -1,15 +1,12 @@
-import { Flex, useColorMode } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
 import { useEffect, createContext, useState } from "react";
 import { Container } from "../components/Container";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import HypeLogo from "../components/HypeLogo";
 import { HyperspaceClient } from "hyperspace-client-js";
-import {
-  MarketPlaceActionEnum,
-  NonMarketPlaceActionEnum,
-} from "hyperspace-client-js/dist/sdk";
 import { DashboardContainer } from "../components/DashboardContainer";
 import { InfoContext } from "../infocontext";
+import { SearchBox } from "../components/searchbox/SearchBox";
 
 const Index = () => {
   const { colorMode } = useColorMode();
@@ -25,7 +22,8 @@ const Index = () => {
   return (
     <Container height="100vh" width="100vw" padding="10px">
       <InfoContext.Provider value={{ userAddress, hyperClient }}>
-        <DashboardContainer height="100%" width="100%" />
+        {/* <DashboardContainer height="100%" width="100%" /> */}
+        <SearchBox />
       </InfoContext.Provider>
     </Container>
   );
