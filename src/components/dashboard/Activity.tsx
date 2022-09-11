@@ -13,9 +13,9 @@ let data = {
     {
       label: "# of Votes",
       data: [0, 0],
-      backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
-      borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
-      borderWidth: 1,
+      backgroundColor: ["#ea168e", "#612570"],
+      borderColor: ["#ea168e9f", "#6125709f"],
+      borderWidth: 3,
     },
   ],
 };
@@ -61,12 +61,9 @@ export const Activity = () => {
             resultTransaction.pagination_info.total_page_number *
               resultTransaction.pagination_info.current_page_size,
           ],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-          ],
-          borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
-          borderWidth: 2,
+          backgroundColor: ["#ea168e", "#612570"],
+          borderColor: ["#ea168e9f", "#6125709f"],
+          borderWidth: 3,
         },
       ],
     };
