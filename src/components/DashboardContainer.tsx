@@ -5,6 +5,7 @@ import { TransactionListing } from "./dashboard/TransactionListing";
 import { Portfolio } from "./dashboard/Portfolio";
 import { Activity } from "./dashboard/Activity";
 import { MintListing } from "./dashboard/MintListing";
+import { repeat } from "lodash";
 
 export const DashboardContainer = (props: GridProps) => {
   return (
@@ -17,6 +18,7 @@ export const DashboardContainer = (props: GridProps) => {
       "transaction transaction portfolio portfolio portfolio portfolio portfolio"
     `}
       gap="1"
+      templateColumns={"2fr 2fr 2fr 2fr 2fr 2fr 2fr"}
       {...props}
     >
       <GridItem area={"userInfo"}>

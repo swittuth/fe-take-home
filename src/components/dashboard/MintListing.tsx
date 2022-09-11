@@ -30,8 +30,8 @@ export const MintListing = () => {
       rounded="lg"
       direction={"column"}
       position="relative"
-      padding="10px"
       h="40vh"
+      width="100%"
       gap="10px"
       overflow={"auto"}
     >
@@ -51,6 +51,9 @@ export const MintListing = () => {
           meta_data_img={obj.meta_data_img}
           price={obj.non_market_place_state.price}
           block_timestamp={obj.non_market_place_state.block_timestamp}
+          marginLeft="10px"
+          marginRight="10px"
+          fontSize="x-small"
         />
       ))}
     </Flex>
