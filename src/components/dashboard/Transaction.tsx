@@ -1,6 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useState } from "react";
 import { Flex, FlexProps, Stack, Avatar, Text } from "@chakra-ui/react";
 import moment from "moment";
+import { round } from "lodash";
 
 type transactionType = {
   project_name: string;
@@ -9,7 +10,10 @@ type transactionType = {
   block_timestamp: number;
 };
 
+const SOL_USD = 34.98;
+
 export const Transaction = (props: transactionType | FlexProps) => {
+  const [displayDollar, setDisplayDollar] = useState(false);
   return (
     <Flex
       direction="row"
@@ -19,14 +23,29 @@ export const Transaction = (props: transactionType | FlexProps) => {
       padding="8px"
       background="#1A365D"
       borderColor="black"
+      onMouseEnter={() => {
+        setDisplayDollar(true);
+      }}
+      onMouseLeave={() => {
+        setDisplayDollar(false);
+      }}
+      _hover={{
+        backgroundColor: "#36485e",
+        cursor: "pointer",
+        transition: "0.2s",
+      }}
       {...props}
     >
       <Flex w="70%" alignItems={"center"} gap="5px">
         <Avatar src={props.meta_data_img} />
-        <Text>{props.project_name}</Text>
+        <Text fontSize="sm">{props.project_name}</Text>
       </Flex>
       <Flex w="30%" alignItems={"flex-end"} direction="column">
-        <Text>{props.price} Sol</Text>
+        <Text fontSize="sm">
+          {displayDollar
+            ? round(props.price * SOL_USD, 2) + " $"
+            : props.price + " Sol"}
+        </Text>
         <Text fontSize="x-small">
           {moment.unix(props.block_timestamp).fromNow()}
         </Text>

@@ -3,6 +3,7 @@ import { useEffect, useContext, useState } from "react";
 import { MarketPlaceActionEnum } from "hyperspace-client-js/dist/sdk";
 import { InfoContext } from "../../infocontext";
 import { Transaction } from "./Transaction";
+import { motion } from "framer-motion";
 
 export const TransactionListing = () => {
   const { userAddress, hyperClient } = useContext(InfoContext);
@@ -46,15 +47,21 @@ export const TransactionListing = () => {
       </Badge>
 
       {transactions.map((obj) => (
-        <Transaction
-          key={obj.market_place_state.block_timestamp}
-          marginLeft="10px"
-          marginRight="10px"
-          project_name={obj.project_name}
-          meta_data_img={obj.meta_data_img}
-          price={obj.market_place_state.price}
-          block_timestamp={obj.market_place_state.block_timestamp}
-        />
+        <motion.div
+          initial={{ paddingTop: "100px" }}
+          animate={{ paddingTop: "0px" }}
+          transition={{ duration: 0.2 }}
+        >
+          <Transaction
+            key={obj.market_place_state.block_timestamp}
+            marginLeft="10px"
+            marginRight="10px"
+            project_name={obj.project_name}
+            meta_data_img={obj.meta_data_img}
+            price={obj.market_place_state.price}
+            block_timestamp={obj.market_place_state.block_timestamp}
+          />
+        </motion.div>
       ))}
     </Flex>
   );

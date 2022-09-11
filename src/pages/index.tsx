@@ -11,7 +11,7 @@ import { SearchBox } from "../components/searchbox/SearchBox";
 const Index = () => {
   const { colorMode } = useColorMode();
   const [userAddress, setUserAddress] = useState(
-    "H3AkHZHfcqGCcJpBn3FJWe52LcLxFMJQoZvZ6XyApFWf"
+    "FwugPyZWSbUrA6JntH9RvpyLMaCdtwCTVv1sbLxBXW8a"
   );
   // API client for accessing Hyperspace data
   const hyperClient = new HyperspaceClient(

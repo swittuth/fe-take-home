@@ -1,12 +1,13 @@
 import { InfoContext } from "../../infocontext";
 import { useContext, useEffect, useState } from "react";
-import { Flex, Stack, Text, Badge, Button } from "@chakra-ui/react";
+import { Flex, Stack, Text, Badge, Button, Skeleton } from "@chakra-ui/react";
 import { FaWallet } from "react-icons/fa";
 import { TiArrowBack } from "react-icons/ti";
 import { round } from "lodash";
 
 export const UserInfo = () => {
   const { userAddress, hyperClient, setUserAddress } = useContext(InfoContext);
+  const [loading, setLoading] = useState(true);
   const [walletInfo, setWalletInfo] = useState("");
 
   useEffect(() => {
@@ -23,6 +24,7 @@ export const UserInfo = () => {
     });
     const resultWallStats = walletStats.getWalletStats;
     setWalletInfo(resultWallStats.wallet_stats[0]);
+    setLoading(false);
   }
 
   return (
@@ -67,33 +69,51 @@ export const UserInfo = () => {
       </Stack>
       {/* contain information related to the wallet overall */}
       <Flex h="60%" alignItems={"center"} gap="3px" justifyContent={"center"}>
-        <Badge
-          shadow={"2xl"}
-          padding="5px"
-          rounded="md"
-          height="min-content"
-          colorScheme={"purple"}
-        >
-          Rank {walletInfo.rank}
-        </Badge>
-        <Badge
-          shadow={"2xl"}
-          padding="5px"
-          rounded="md"
-          height="min-content"
-          colorScheme={"blue"}
-        >
-          NFT OWNED: {walletInfo.owned_nfts}
-        </Badge>
-        <Badge
-          shadow={"2xl"}
-          padding="5px"
-          rounded="md"
-          height="min-content"
-          colorScheme={"green"}
-        >
-          Portfolio Value: {round(walletInfo.portfolio_value, 2)}
-        </Badge>
+        {loading ? (
+          <Skeleton height="max-content" width="max-content">
+            Rank
+          </Skeleton>
+        ) : (
+          <Badge
+            shadow={"2xl"}
+            padding="5px"
+            rounded="md"
+            height="min-content"
+            colorScheme={"purple"}
+          >
+            Rank {walletInfo.rank}
+          </Badge>
+        )}
+        {loading ? (
+          <Skeleton height="max-content" width="max-content">
+            NFT OWNED:
+          </Skeleton>
+        ) : (
+          <Badge
+            shadow={"2xl"}
+            padding="5px"
+            rounded="md"
+            height="min-content"
+            colorScheme={"blue"}
+          >
+            NFT OWNED: {walletInfo.owned_nfts}
+          </Badge>
+        )}
+        {loading ? (
+          <Skeleton height="max-content" width="max-content">
+            PORTFOLIO VALUE:
+          </Skeleton>
+        ) : (
+          <Badge
+            shadow={"2xl"}
+            padding="5px"
+            rounded="md"
+            height="min-content"
+            colorScheme={"green"}
+          >
+            Portfolio Value: {round(walletInfo.portfolio_value, 2)}
+          </Badge>
+        )}
       </Flex>
     </Flex>
   );
