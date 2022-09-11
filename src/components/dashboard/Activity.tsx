@@ -85,9 +85,16 @@ export const Activity = () => {
       >
         <p style={{ textAlign: "center", letterSpacing: "0.2em" }}>ACTIVITY</p>
       </Badge>
-      <Box height="100%">
-        <Doughnut data={data} options={options} />
-      </Box>
+      <Flex
+        height="100%"
+        width="100%"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Box height="95%">
+          <Doughnut data={data} options={options} />
+        </Box>
+      </Flex>
     </Flex>
   );
 };
