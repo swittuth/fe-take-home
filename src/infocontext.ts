@@ -6,4 +6,7 @@ const hyperClient = new HyperspaceClient("");
 export const InfoContext = createContext({
   userAddress: "",
   hyperClient: hyperClient,
+  setUserAddress: (address: string) => {
+    this.userAddress = address;
+  },
 });

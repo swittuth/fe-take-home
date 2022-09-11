@@ -1,4 +1,5 @@
 import HypeLogoAnimated from "./HypeLogoAnimated";
+import { WalletInput } from "./WalletInput";
 import { useEffect, useState } from "react";
 
 export const SearchBox = () => {
@@ -7,7 +8,7 @@ export const SearchBox = () => {
   useEffect(() => {
     setTimeout(() => {
       setLogo(false);
-    }, 3500);
+    }, 2000);
   }, []);
 
   return (
@@ -15,13 +16,13 @@ export const SearchBox = () => {
       {logo ? (
         <HypeLogoAnimated
           width="70vw"
-          drawDuration={2}
-          fillDuration={1}
+          drawDuration={1}
+          fillDuration={0.5}
           strokeColor="#7efaff"
           fillColor="#7efaff"
         />
       ) : (
-        <p>Input</p>
+        <WalletInput />
       )}
     </>
   );
