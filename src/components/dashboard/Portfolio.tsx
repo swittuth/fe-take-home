@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { InfoContext } from "../../infocontext";
 import moment from "moment";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Badge, Box } from "@chakra-ui/react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -19,28 +19,23 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
   Legend
 );
 
-export const options = {
+const options = {
   maintainAspectRatio: false,
   responsive: true,
   plugins: {
     legend: {
       position: "top" as const,
     },
-    title: {
-      display: true,
-      text: "Portfolio Value",
-    },
   },
 };
 
 const labels: string[] = [];
 
-export let data = {
+let data = {
   labels,
   datasets: [
     {
@@ -80,7 +75,7 @@ export const Portfolio = () => {
       labels,
       datasets: [
         {
-          label: "Dataset 1",
+          label: userAddress,
           data: labels.map(
             (date, index) =>
               resWalletHistory.wallet_stats_history[index].portfolio_value
@@ -100,12 +95,32 @@ export const Portfolio = () => {
     <Flex
       height="58vh"
       width="100%"
-      padding="50px"
       alignItems={"center"}
+      direction="column"
       rounded="lg"
       background="#171A2799"
     >
-      <Line data={data} options={options} height="100%" />
+      <Badge
+        width="100%"
+        roundedTopLeft="lg"
+        roundedTopRight="lg"
+        colorScheme={"blue"}
+        fontSize="lg"
+      >
+        <p style={{ textAlign: "center", letterSpacing: "0.2em" }}>
+          PORTFOLIO VALUE
+        </p>
+      </Badge>
+      <Flex
+        justifyContent="center"
+        alignItems="center"
+        width="100%"
+        height="100%"
+      >
+        <Box width="95%" height="90%">
+          <Line data={data} options={options} />
+        </Box>
+      </Flex>
     </Flex>
   );
 };
