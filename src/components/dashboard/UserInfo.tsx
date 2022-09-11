@@ -41,14 +41,13 @@ export const UserInfo = () => {
         borderTopLeftRadius="5px"
         borderTopRightRadius="5px"
         direction="row"
-        wrap="wrap"
         alignItems={"center"}
         gap="5px"
       >
         <Avatar></Avatar>
         <Text textOverflow={"ellipsis"} overflow="hidden" whiteSpace={"nowrap"}>
           {/* to fix later and resize text depending on the width of the screen */}
-          {userAddress.slice(0, 8)}...
+          {userAddress}
         </Text>
       </Stack>
       {/* contain information related to the wallet overall */}

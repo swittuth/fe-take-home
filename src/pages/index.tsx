@@ -60,7 +60,6 @@ const Index = () => {
       },
     });
     const resultUserHistory = userHistory.getUserHistory;
-    console.log("user history", resultUserHistory);
 
     // can also get data from user related to other details - get buyer's address
   }

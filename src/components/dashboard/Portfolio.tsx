@@ -25,6 +25,7 @@ ChartJS.register(
 );
 
 export const options = {
+  maintainAspectRatio: false,
   responsive: true,
   plugins: {
     legend: {
@@ -62,7 +63,7 @@ export const Portfolio = () => {
   async function getWalletHistory() {
     const walletHistory = await hyperClient.getWalletStatsHist({
       condition: {
-        searchAddress: "4ZCiGakZJy5aJsLpMBNBNwyrmNCCSCzukzhaPzzd4d7v",
+        searchAddress: userAddress,
         dayLookback: "MONTH",
       },
     });
@@ -90,10 +91,7 @@ export const Portfolio = () => {
         },
       ],
     };
-
     setRenderData(data);
-
-    console.log(resWalletHistory);
   }
 
   useEffect(() => {}, []);

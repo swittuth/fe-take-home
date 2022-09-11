@@ -2,10 +2,12 @@ import { InfoContext } from "../../infocontext";
 import { Flex } from "@chakra-ui/react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { useContext, useEffect, useState } from "react";
+import { MarketPlaceActionEnum } from "hyperspace-client-js/dist/sdk";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const data = {
+export let data = {
   labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
   datasets: [
     {
@@ -33,16 +35,64 @@ export const data = {
 };
 
 export const Activity = () => {
+  const { userAddress, hyperClient } = useContext(InfoContext);
+  const [renderData, setRenderData] = useState(data);
+
+  useEffect(() => {
+    getActivity();
+  }, []);
+
+  async function getActivity() {
+    const listingHistory = await hyperClient.getUserHistory({
+      condition: {
+        userAddress: userAddress,
+        actionTypes: [MarketPlaceActionEnum.Listing],
+      },
+    });
+    const resultListing = listingHistory.getUserHistory;
+    console.log(resultListing);
+    const transactionHistory = await hyperClient.getUserHistory({
+      condition: {
+        userAddress: userAddress,
+        actionTypes: [MarketPlaceActionEnum.Transaction],
+      },
+    });
+    const resultTransaction = transactionHistory.getUserHistory;
+    console.log(resultTransaction);
+    data = {
+      labels: ["Listings", "Buyings"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [
+            resultListing.pagination_info.total_page_number *
+              resultListing.pagination_info.current_page_size,
+            resultTransaction.pagination_info.total_page_number *
+              resultTransaction.pagination_info.current_page_size,
+          ],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+          ],
+          borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+          borderWidth: 1,
+        },
+      ],
+    };
+    setRenderData(data);
+  }
+
   return (
     <Flex
       rounded="lg"
       background="#171A2799"
-      width="500px"
+      width="100%"
+      height="100%"
       alignItems="center"
       justifyContent="center"
       padding="10px"
     >
-      <Doughnut data={data} />
+      <Doughnut data={data} options={{ maintainAspectRatio: false }} />
     </Flex>
   );
 };
