@@ -1,7 +1,7 @@
 import { InfoContext } from "../../infocontext";
 import { useContext, useEffect, useState } from "react";
 import { Flex, Stack, Avatar, Text, Badge } from "@chakra-ui/react";
-import { Box } from "@chakra-ui/react";
+import { FaWallet } from "react-icons/fa";
 
 export const UserInfo = () => {
   const { userAddress, hyperClient } = useContext(InfoContext);
@@ -27,7 +27,7 @@ export const UserInfo = () => {
   return (
     <Flex
       w="100%"
-      h="10vh"
+      h="20vh"
       flexDirection="column"
       rounded="lg"
       border="1px"
@@ -41,14 +41,18 @@ export const UserInfo = () => {
         borderTopLeftRadius="5px"
         borderTopRightRadius="5px"
         direction="row"
-        wrap="wrap"
         alignItems={"center"}
-        gap="5px"
+        gap="3px"
       >
-        <Avatar></Avatar>
-        <Text textOverflow={"ellipsis"} overflow="hidden" whiteSpace={"nowrap"}>
+        <FaWallet />
+        <Text
+          fontSize="sm"
+          textOverflow={"ellipsis"}
+          overflow="hidden"
+          whiteSpace={"nowrap"}
+        >
           {/* to fix later and resize text depending on the width of the screen */}
-          {userAddress.slice(0, 8)}...
+          {userAddress}
         </Text>
       </Stack>
       {/* contain information related to the wallet overall */}

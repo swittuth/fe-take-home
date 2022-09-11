@@ -4,12 +4,13 @@ import { UserInfo } from "./dashboard/UserInfo";
 import { TransactionListing } from "./dashboard/TransactionListing";
 import { Portfolio } from "./dashboard/Portfolio";
 import { Activity } from "./dashboard/Activity";
+import { MintListing } from "./dashboard/MintListing";
 
 export const DashboardContainer = (props: GridProps) => {
   return (
     <Grid
       templateAreas={`
-      "userInfo userInfo donutChart donutChart  minting minting minting"
+      "userInfo userInfo donutChart donutChart minting minting minting"
       "transaction transaction donutChart donutChart minting minting minting"
       "transaction transaction portfolio portfolio portfolio portfolio portfolio"
       "transaction transaction portfolio portfolio portfolio portfolio portfolio"
@@ -24,7 +25,9 @@ export const DashboardContainer = (props: GridProps) => {
       <GridItem area={"donutChart"}>
         <Activity />
       </GridItem>
-      <GridItem area={"minting"}>Minting</GridItem>
+      <GridItem area={"minting"}>
+        <MintListing />
+      </GridItem>
       <GridItem area={"transaction"}>
         <TransactionListing />
       </GridItem>

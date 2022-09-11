@@ -28,7 +28,7 @@ export const TransactionListing = () => {
       background="#171A2799"
       rounded="lg"
       direction={"column"}
-      h="88vh"
+      h="78vh"
       w="100%"
       padding="10px"
       gap="10px"
