@@ -30,7 +30,6 @@ export const MintListing = () => {
       rounded="lg"
       direction={"column"}
       position="relative"
-      w="100%"
       padding="10px"
       h="40vh"
       gap="10px"

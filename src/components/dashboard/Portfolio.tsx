@@ -98,7 +98,7 @@ export const Portfolio = () => {
 
   return (
     <Flex
-      height={"100%"}
+      height="58vh"
       width="100%"
       padding="50px"
       alignItems={"center"}

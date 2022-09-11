@@ -86,8 +86,10 @@ export const Activity = () => {
     <Flex
       rounded="lg"
       background="#171A2799"
-      width="50vh"
-      height="40vh"
+      position="relative"
+      height="50vh"
+      width="100%"
+      maxWidth="40vw"
       alignItems="center"
       justifyContent="center"
       padding="10px"
