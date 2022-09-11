@@ -38,7 +38,6 @@ export const Activity = () => {
       rounded="lg"
       background="#171A2799"
       width="500px"
-      height="100%"
       alignItems="center"
       justifyContent="center"
       padding="10px"
