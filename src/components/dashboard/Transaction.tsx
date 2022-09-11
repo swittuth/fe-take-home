@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Flex, FlexProps, Stack, Avatar, Text } from "@chakra-ui/react";
+import { Flex, FlexProps, Avatar, Text, Badge } from "@chakra-ui/react";
 import moment from "moment";
 import { round } from "lodash";
 
@@ -23,6 +23,7 @@ export const Transaction = (props: transactionType | FlexProps) => {
       padding="8px"
       background="#1A365D"
       borderColor="black"
+      fontWeight="semibold"
       onMouseEnter={() => {
         setDisplayDollar(true);
       }}
@@ -35,6 +36,7 @@ export const Transaction = (props: transactionType | FlexProps) => {
         transition: "0.2s",
       }}
       {...props}
+      color="#bdf9f7"
     >
       <Flex w="70%" alignItems={"center"} gap="5px">
         <Avatar src={props.meta_data_img} />
