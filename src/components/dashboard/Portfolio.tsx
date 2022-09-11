@@ -9,7 +9,7 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
+  Filler,
   Tooltip,
   Legend,
 } from "chart.js";
@@ -19,6 +19,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  Filler,
   Tooltip,
   Legend
 );
@@ -31,6 +32,11 @@ const options = {
       position: "top" as const,
     },
   },
+  elements: {
+    point: {
+      radius: 0,
+    },
+  },
 };
 
 const labels: string[] = [];
@@ -39,7 +45,7 @@ let data = {
   labels,
   datasets: [
     {
-      label: "Dataset 1",
+      label: "",
       data: labels.map(() => Math.random() * 1000),
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.5)",
@@ -75,21 +81,21 @@ export const Portfolio = () => {
       labels,
       datasets: [
         {
+          fill: true,
           label: userAddress,
           data: labels.map(
-            (date, index) =>
+            (data, index) =>
               resWalletHistory.wallet_stats_history[index].portfolio_value
           ),
-          borderColor: "rgb(255, 99, 132)",
-          backgroundColor: "rgba(255, 99, 132, 0.5)",
+          borderColor: "#2b3595",
+          borderWidth: "1",
+          backgroundColor: "#7045af",
           tension: 0.5,
         },
       ],
     };
     setRenderData(data);
   }
-
-  useEffect(() => {}, []);
 
   return (
     <Flex
