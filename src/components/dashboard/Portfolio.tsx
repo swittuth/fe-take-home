@@ -39,7 +39,7 @@ const options = {
   },
 };
 
-const labels: string[] = [];
+let labels: string[] = [];
 
 let data = {
   labels,
@@ -94,6 +94,7 @@ export const Portfolio = () => {
         },
       ],
     };
+    labels = [];
     setRenderData(data);
   }
 
