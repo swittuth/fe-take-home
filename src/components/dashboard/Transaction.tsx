@@ -1,15 +1,15 @@
 import { useContext, useEffect } from "react";
-import { Flex, Stack, Avatar, Text } from "@chakra-ui/react";
+import { Flex, FlexProps, Stack, Avatar, Text } from "@chakra-ui/react";
 import moment from "moment";
 
 type transactionType = {
   project_name: string;
   meta_data_img: string;
   price: number;
-  block_timestamp: string;
+  block_timestamp: number;
 };
 
-export const Transaction = (props: transactionType) => {
+export const Transaction = (props: transactionType | FlexProps) => {
   return (
     <Flex
       direction="row"
@@ -19,6 +19,7 @@ export const Transaction = (props: transactionType) => {
       padding="8px"
       background="#1A365D"
       borderColor="black"
+      {...props}
     >
       <Flex w="70%" alignItems={"center"} gap="5px">
         <Avatar src={props.meta_data_img} />

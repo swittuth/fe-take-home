@@ -1,6 +1,6 @@
 import { InfoContext } from "../../infocontext";
 import { useContext, useState, useEffect } from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Badge } from "@chakra-ui/react";
 import { Transaction } from "./Transaction";
 import { NonMarketPlaceActionEnum } from "hyperspace-client-js/dist/sdk";
 
@@ -35,7 +35,15 @@ export const MintListing = () => {
       gap="10px"
       overflow={"auto"}
     >
-      <p>MINTING</p>
+      <Badge
+        width="100%"
+        roundedTopLeft="lg"
+        roundedTopRight="lg"
+        colorScheme={"blue"}
+        fontSize="lg"
+      >
+        <p style={{ textAlign: "center", letterSpacing: "0.2em" }}>MINTING</p>
+      </Badge>
       {mints.map((obj) => (
         <Transaction
           key={obj.non_market_place_state.block_timestamp}

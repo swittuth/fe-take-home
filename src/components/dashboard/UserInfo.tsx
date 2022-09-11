@@ -1,14 +1,15 @@
 import { InfoContext } from "../../infocontext";
 import { useContext, useEffect, useState } from "react";
-import { Flex, Stack, Avatar, Text, Badge } from "@chakra-ui/react";
+import { Flex, Stack, Text, Badge, Button } from "@chakra-ui/react";
 import { FaWallet } from "react-icons/fa";
+import { TiArrowBack } from "react-icons/ti";
+import { round } from "lodash";
 
 export const UserInfo = () => {
-  const { userAddress, hyperClient } = useContext(InfoContext);
+  const { userAddress, hyperClient, setUserAddress } = useContext(InfoContext);
   const [walletInfo, setWalletInfo] = useState("");
 
   useEffect(() => {
-    // perform fetch request to get user info
     getWalletInfo();
   }, []);
 
@@ -44,6 +45,15 @@ export const UserInfo = () => {
         alignItems={"center"}
         gap="3px"
       >
+        <Button
+          height="50%"
+          onClick={() => {
+            setUserAddress("");
+          }}
+        >
+          <TiArrowBack />
+        </Button>
+
         <FaWallet />
         <Text
           fontSize="sm"
@@ -82,7 +92,7 @@ export const UserInfo = () => {
           height="min-content"
           colorScheme={"green"}
         >
-          Portfolio Value: {walletInfo.portfolio_value}
+          Portfolio Value: {round(walletInfo.portfolio_value, 2)}
         </Badge>
       </Flex>
     </Flex>
