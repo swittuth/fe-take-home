@@ -9,4 +9,7 @@ export const InfoContext = createContext({
   setUserAddress: (address: string) => {
     this.userAddress = address;
   },
+  containerColor: "",
+  cardColor: "",
+  cardTextColor: "",
 });
