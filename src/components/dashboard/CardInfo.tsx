@@ -12,7 +12,7 @@ type transactionType = {
 
 const SOL_USD = 34.98;
 
-export const Transaction = (props: transactionType | FlexProps) => {
+export const CardInfo = (props: transactionType | FlexProps) => {
   const [displayDollar, setDisplayDollar] = useState(false);
   return (
     <Flex

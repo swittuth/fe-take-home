@@ -25,7 +25,7 @@ const options = {
   responsive: true,
 };
 
-export const Activity = () => {
+export const ActivityChart = () => {
   const { userAddress, hyperClient } = useContext(InfoContext);
   const [renderData, setRenderData] = useState(data);
 

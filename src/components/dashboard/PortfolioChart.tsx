@@ -53,7 +53,7 @@ let data = {
   ],
 };
 
-export const Portfolio = () => {
+export const PortfolioChart = () => {
   const { userAddress, hyperClient } = useContext(InfoContext);
   const [renderData, setRenderData] = useState({});
 

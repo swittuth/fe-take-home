@@ -2,10 +2,9 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import { GridProps } from "@chakra-ui/styled-system";
 import { UserInfo } from "./dashboard/UserInfo";
 import { TransactionListing } from "./dashboard/TransactionListing";
-import { Portfolio } from "./dashboard/Portfolio";
-import { Activity } from "./dashboard/Activity";
+import { PortfolioChart } from "./dashboard/PortfolioChart";
+import { ActivityChart } from "./dashboard/ActivityChart";
 import { MintListing } from "./dashboard/MintListing";
-import { repeat } from "lodash";
 
 export const DashboardContainer = (props: GridProps) => {
   return (
@@ -25,7 +24,7 @@ export const DashboardContainer = (props: GridProps) => {
         <UserInfo />
       </GridItem>
       <GridItem area={"donutChart"}>
-        <Activity />
+        <ActivityChart />
       </GridItem>
       <GridItem area={"minting"}>
         <MintListing />
@@ -34,7 +33,7 @@ export const DashboardContainer = (props: GridProps) => {
         <TransactionListing />
       </GridItem>
       <GridItem area="portfolio">
-        <Portfolio />
+        <PortfolioChart />
       </GridItem>
     </Grid>
   );

@@ -1,7 +1,7 @@
 import { InfoContext } from "../../infocontext";
 import { useContext, useState, useEffect } from "react";
 import { Flex, Badge } from "@chakra-ui/react";
-import { Transaction } from "./Transaction";
+import { CardInfo } from "./CardInfo";
 import { NonMarketPlaceActionEnum } from "hyperspace-client-js/dist/sdk";
 import { motion } from "framer-motion";
 
@@ -51,7 +51,7 @@ export const MintListing = () => {
           animate={{ paddingTop: "0px" }}
           transition={{ duration: 0.2 }}
         >
-          <Transaction
+          <CardInfo
             key={obj.non_market_place_state.block_timestamp}
             project_name={obj.project_name}
             meta_data_img={obj.meta_data_img}

@@ -118,6 +118,7 @@ export const UserInfo = () => {
             rounded="md"
             height="min-content"
             colorScheme={"green"}
+            _hover={{ cursor: "pointer" }}
             onMouseEnter={() => {
               setDisplayDollar(true);
             }}
