@@ -12,9 +12,7 @@ const Index = () => {
   const cardColor = useColorModeValue("#cde8f6", "#1A365D");
   const cardTextColor = useColorModeValue("#393e6f", "#bdf9f7");
 
-  const [userAddress, setUserAddress] = useState(
-    "FwugPyZWSbUrA6JntH9RvpyLMaCdtwCTVv1sbLxBXW8a"
-  );
+  const [userAddress, setUserAddress] = useState("");
   // API client for accessing Hyperspace data
   const hyperClient = new HyperspaceClient(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJGRSBJbnRlcnZpZXciLCJuYW1lIjoiSHlwZXJzcGFjZSIsImlhdCI6MTUxNjIzOTAyMn0.HDfB97Y1pgQqQ6GshXsh5nz7fA1_ban9MTZDAbgobJk"
