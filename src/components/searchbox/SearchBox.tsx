@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 export const SearchBox = () => {
   const [logo, setLogo] = useState(true);
 
+  // to remove the logo after animation and transition to wallet input
   useEffect(() => {
     setTimeout(() => {
       setLogo(false);

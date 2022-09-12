@@ -4,30 +4,18 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { useContext, useEffect, useState } from "react";
 import { MarketPlaceActionEnum } from "hyperspace-client-js/dist/sdk";
+import { Skeleton } from "@chakra-ui/react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-let data = {
-  labels: ["Listings", "Buyings"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [0, 0],
-      backgroundColor: ["#ea168e", "#612570"],
-      borderColor: ["#ea168e9f", "#6125709f"],
-      borderWidth: 3,
-    },
-  ],
-};
 
 const options = {
   maintainAspectRatio: false,
   responsive: true,
 };
 
-export const Activity = () => {
+export const ActivityChart = () => {
   const { userAddress, hyperClient } = useContext(InfoContext);
-  const [renderData, setRenderData] = useState(data);
+  const [data, setData] = useState({});
 
   useEffect(() => {
     getActivity();
@@ -41,7 +29,6 @@ export const Activity = () => {
       },
     });
     const resultListing = listingHistory.getUserHistory;
-    console.log(resultListing);
     const transactionHistory = await hyperClient.getUserHistory({
       condition: {
         userAddress: userAddress,
@@ -49,8 +36,7 @@ export const Activity = () => {
       },
     });
     const resultTransaction = transactionHistory.getUserHistory;
-    console.log(resultTransaction);
-    data = {
+    const tempData = {
       labels: ["Listings", "Buyings"],
       datasets: [
         {
@@ -67,7 +53,7 @@ export const Activity = () => {
         },
       ],
     };
-    setRenderData(data);
+    setData(tempData);
   }
 
   return (
@@ -77,21 +63,27 @@ export const Activity = () => {
         width="100%"
         roundedTopLeft="lg"
         roundedTopRight="lg"
-        colorScheme={"blue"}
+        colorScheme="blue"
         fontSize="lg"
       >
         <p style={{ textAlign: "center", letterSpacing: "0.2em" }}>ACTIVITY</p>
       </Badge>
-      <Flex
-        height="100%"
-        width="100%"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Box height="95%">
-          <Doughnut data={data} options={options} />
-        </Box>
-      </Flex>
+      <Box height="100%" width="100%">
+        <Flex
+          height="95%"
+          width="100%"
+          justifyContent="center"
+          alignItems="center"
+        >
+          {Object.keys(data).length > 0 ? (
+            <Doughnut data={data} options={options} />
+          ) : (
+            <Skeleton height="90%" width="90%">
+              placeholder
+            </Skeleton>
+          )}
+        </Flex>
+      </Box>
     </Flex>
   );
 };

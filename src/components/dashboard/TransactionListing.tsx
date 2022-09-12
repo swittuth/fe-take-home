@@ -1,13 +1,13 @@
-import { Flex, Box, Badge } from "@chakra-ui/react";
+import { Flex, Badge } from "@chakra-ui/react";
 import { useEffect, useContext, useState } from "react";
 import { MarketPlaceActionEnum } from "hyperspace-client-js/dist/sdk";
 import { InfoContext } from "../../infocontext";
-import { Transaction } from "./Transaction";
+import { CardInfo } from "./CardInfo";
 import { motion } from "framer-motion";
 
 export const TransactionListing = () => {
   const { userAddress, hyperClient } = useContext(InfoContext);
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState<any[]>([]);
 
   useEffect(() => {
     getTransactions();
@@ -16,7 +16,7 @@ export const TransactionListing = () => {
   async function getTransactions() {
     const userHistory = await hyperClient.getUserHistory({
       condition: {
-        userAddress: "4ZCiGakZJy5aJsLpMBNBNwyrmNCCSCzukzhaPzzd4d7v",
+        userAddress: userAddress,
         actionTypes: [MarketPlaceActionEnum.Transaction],
       },
     });
@@ -52,7 +52,7 @@ export const TransactionListing = () => {
           animate={{ paddingTop: "0px" }}
           transition={{ duration: 0.2 }}
         >
-          <Transaction
+          <CardInfo
             key={obj.market_place_state.block_timestamp}
             marginLeft="10px"
             marginRight="10px"

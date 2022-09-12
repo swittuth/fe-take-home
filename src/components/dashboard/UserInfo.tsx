@@ -4,11 +4,13 @@ import { Flex, Stack, Text, Badge, Button, Skeleton } from "@chakra-ui/react";
 import { FaWallet } from "react-icons/fa";
 import { TiArrowBack } from "react-icons/ti";
 import { round } from "lodash";
+import { SOL_USD } from "../../soltousd";
 
 export const UserInfo = () => {
   const { userAddress, hyperClient, setUserAddress } = useContext(InfoContext);
   const [loading, setLoading] = useState(true);
-  const [walletInfo, setWalletInfo] = useState("");
+  const [walletInfo, setWalletInfo] = useState<any>({});
+  const [displayDollar, setDisplayDollar] = useState(false);
 
   useEffect(() => {
     getWalletInfo();
@@ -68,14 +70,20 @@ export const UserInfo = () => {
         </Text>
       </Stack>
       {/* contain information related to the wallet overall */}
-      <Flex h="60%" alignItems={"center"} gap="3px" justifyContent={"center"}>
+      <Flex
+        h="60%"
+        alignItems={"center"}
+        gap="3px"
+        justifyContent={"center"}
+        flexWrap="wrap"
+      >
         {loading ? (
           <Skeleton height="max-content" width="max-content">
             Rank
           </Skeleton>
         ) : (
           <Badge
-            shadow={"2xl"}
+            shadow="2xl"
             padding="5px"
             rounded="md"
             height="min-content"
@@ -110,8 +118,20 @@ export const UserInfo = () => {
             rounded="md"
             height="min-content"
             colorScheme={"green"}
+            _hover={{ cursor: "pointer" }}
+            onMouseEnter={() => {
+              setDisplayDollar(true);
+            }}
+            onMouseLeave={() => {
+              setDisplayDollar(false);
+            }}
           >
-            Portfolio Value: {round(walletInfo.portfolio_value, 2)}
+            {displayDollar
+              ? `Portfolio Value: ${round(
+                  walletInfo.portfolio_value * SOL_USD,
+                  2
+                )} $`
+              : `Portfolio Value: ${round(walletInfo.portfolio_value, 2)} Sol`}
           </Badge>
         )}
       </Flex>
