@@ -52,6 +52,7 @@ export const CardInfo: FC<transactionType & FlexProps> = ({
       </Flex>
       <Flex w="30%" alignItems={"flex-end"} direction="column">
         <Text fontSize="sm">
+          {/* converting amount upon hover */}
           {displayDollar ? round(price * SOL_USD, 2) + " $" : price + " Sol"}
         </Text>
         <Text fontSize="x-small">{moment.unix(block_timestamp).fromNow()}</Text>

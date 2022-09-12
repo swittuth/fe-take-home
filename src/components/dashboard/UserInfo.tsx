@@ -86,6 +86,7 @@ export const UserInfo = () => {
         justifyContent={"center"}
         flexWrap="wrap"
       >
+        {/* conditional rendering - skeleton as placeholder for the user's basic information */}
         {loading ? (
           <Skeleton height="max-content" width="max-content">
             Rank

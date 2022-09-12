@@ -14,6 +14,7 @@ export const MintListing = () => {
   }, []);
 
   async function getMinting() {
+    // retrieving data on minting
     const nmHistory = hyperClient.getNonMpaUserHistory({
       condition: {
         userAddress: userAddress,
@@ -45,6 +46,7 @@ export const MintListing = () => {
       >
         <p style={{ textAlign: "center", letterSpacing: "0.2em" }}>MINTING</p>
       </Badge>
+      {/* rendering mint cards info */}
       {mints.map((obj) => (
         <motion.div
           initial={{ paddingTop: "100px" }}

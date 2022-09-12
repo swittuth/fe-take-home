@@ -16,6 +16,7 @@ export const SearchBox = () => {
 
   return (
     <>
+      {/* conditional rendering between logo and the search box */}
       {logo ? (
         <HypeLogoAnimated
           width="70vw"

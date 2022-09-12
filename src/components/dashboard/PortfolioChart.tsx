@@ -49,6 +49,7 @@ export const PortfolioChart = () => {
   }, []);
 
   async function getWalletHistory() {
+    // retrieving data for wallet information
     const walletHistory = await hyperClient.getWalletStatsHist({
       condition: {
         searchAddress: userAddress,
@@ -113,6 +114,7 @@ export const PortfolioChart = () => {
         height="100%"
       >
         <Box width="95%" height="90%">
+          {/* conditional rendering - skeleton is used as placeholder while Line gets data to be rendered */}
           {Object.keys(data).length > 0 ? (
             <Line data={data} options={options} />
           ) : (
