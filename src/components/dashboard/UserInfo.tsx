@@ -8,7 +8,8 @@ import { SOL_USD } from "../../soltousd";
 import { DarkModeSwitch } from "../DarkModeSwitch";
 
 export const UserInfo = () => {
-  const { userAddress, hyperClient, setUserAddress } = useContext(InfoContext);
+  const { userAddress, hyperClient, setUserAddress, containerColor } =
+    useContext(InfoContext);
   const [loading, setLoading] = useState(true);
   const [walletInfo, setWalletInfo] = useState<any>({});
   const [displayDollar, setDisplayDollar] = useState(false);
@@ -36,29 +37,37 @@ export const UserInfo = () => {
       h="20vh"
       flexDirection="column"
       rounded="lg"
-      border="1px"
-      borderColor="black"
-      background="#171A2799"
+      background={containerColor}
       padding="5px"
       boxShadow="2xl"
+      gap="10px"
     >
-      <Stack
+      <Flex
         h="40%"
         borderTopLeftRadius="5px"
         borderTopRightRadius="5px"
         direction="row"
         alignItems={"center"}
+        justifyContent="space-between"
         gap="3px"
       >
         <Button
-          height="50%"
           onClick={() => {
             setUserAddress("");
           }}
         >
           <TiArrowBack />
         </Button>
-        
+
+        <DarkModeSwitch position="relative" top={0} right={0}></DarkModeSwitch>
+      </Flex>
+      {/* contain information related to the wallet overall */}
+      <Flex
+        width="100%"
+        alignItems={"center"}
+        justifyContent="center"
+        gap="5px"
+      >
         <FaWallet />
         <Text
           fontSize="sm"
@@ -66,11 +75,10 @@ export const UserInfo = () => {
           overflow="hidden"
           whiteSpace={"nowrap"}
         >
-          {/* to fix later and resize text depending on the width of the screen */}
           {userAddress}
         </Text>
-      </Stack>
-      {/* contain information related to the wallet overall */}
+      </Flex>
+
       <Flex
         h="60%"
         alignItems={"center"}

@@ -6,7 +6,7 @@ import { CardInfo } from "./CardInfo";
 import { motion } from "framer-motion";
 
 export const TransactionListing = () => {
-  const { userAddress, hyperClient } = useContext(InfoContext);
+  const { userAddress, hyperClient, containerColor } = useContext(InfoContext);
   const [transactions, setTransactions] = useState<any[]>([]);
 
   useEffect(() => {
@@ -26,13 +26,14 @@ export const TransactionListing = () => {
 
   return (
     <Flex
-      background="#171A2799"
+      background={containerColor}
       rounded="lg"
       direction={"column"}
       h="78vh"
       w="100%"
       gap="10px"
       overflow={"auto"}
+      boxShadow="xl"
     >
       <Badge
         width="100%"

@@ -41,7 +41,7 @@ const options = {
 
 let labels: string[] = [];
 export const PortfolioChart = () => {
-  const { userAddress, hyperClient } = useContext(InfoContext);
+  const { userAddress, hyperClient, containerColor } = useContext(InfoContext);
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -92,7 +92,8 @@ export const PortfolioChart = () => {
       alignItems={"center"}
       direction="column"
       rounded="lg"
-      background="#171A2799"
+      boxShadow={"xl"}
+      background={containerColor}
     >
       <Badge
         width="100%"
