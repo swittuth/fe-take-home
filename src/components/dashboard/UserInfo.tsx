@@ -5,6 +5,7 @@ import { FaWallet } from "react-icons/fa";
 import { TiArrowBack } from "react-icons/ti";
 import { round } from "lodash";
 import { SOL_USD } from "../../soltousd";
+import { DarkModeSwitch } from "../DarkModeSwitch";
 
 export const UserInfo = () => {
   const { userAddress, hyperClient, setUserAddress } = useContext(InfoContext);
@@ -57,7 +58,7 @@ export const UserInfo = () => {
         >
           <TiArrowBack />
         </Button>
-
+        
         <FaWallet />
         <Text
           fontSize="sm"

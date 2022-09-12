@@ -47,6 +47,7 @@ export const WalletInput = () => {
               onClick={() => {
                 setUserAddress(walletAddress);
               }}
+              color="white"
             >
               Search
             </Button>
