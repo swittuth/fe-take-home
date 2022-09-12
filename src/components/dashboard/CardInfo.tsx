@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Flex, FlexProps, Avatar, Text, Badge } from "@chakra-ui/react";
+import { useState, FC } from "react";
+import { Flex, FlexProps, Avatar, Text } from "@chakra-ui/react";
 import moment from "moment";
 import { round } from "lodash";
+import { SOL_USD } from "../../soltousd";
 
 type transactionType = {
   project_name: string;
@@ -10,14 +11,19 @@ type transactionType = {
   block_timestamp: number;
 };
 
-const SOL_USD = 34.98;
-
-export const CardInfo = (props: transactionType | FlexProps) => {
+export const CardInfo: FC<transactionType & FlexProps> = ({
+  project_name,
+  meta_data_img,
+  price,
+  block_timestamp,
+  marginLeft,
+  marginRight,
+}) => {
   const [displayDollar, setDisplayDollar] = useState(false);
   return (
     <Flex
       direction="row"
-      alignItems={"center"}
+      alignItems="center"
       rounded="lg"
       border="1px"
       padding="8px"
@@ -35,22 +41,19 @@ export const CardInfo = (props: transactionType | FlexProps) => {
         cursor: "pointer",
         transition: "0.2s",
       }}
-      {...props}
       color="#bdf9f7"
+      marginLeft={marginLeft}
+      marginRight={marginRight}
     >
       <Flex w="70%" alignItems={"center"} gap="5px">
-        <Avatar src={props.meta_data_img} />
-        <Text fontSize="sm">{props.project_name}</Text>
+        <Avatar src={meta_data_img} />
+        <Text fontSize="sm">{project_name}</Text>
       </Flex>
       <Flex w="30%" alignItems={"flex-end"} direction="column">
         <Text fontSize="sm">
-          {displayDollar
-            ? round(props.price * SOL_USD, 2) + " $"
-            : props.price + " Sol"}
+          {displayDollar ? round(price * SOL_USD, 2) + " $" : price + " Sol"}
         </Text>
-        <Text fontSize="x-small">
-          {moment.unix(props.block_timestamp).fromNow()}
-        </Text>
+        <Text fontSize="x-small">{moment.unix(block_timestamp).fromNow()}</Text>
       </Flex>
     </Flex>
   );

@@ -22,7 +22,6 @@ export const MintListing = () => {
     });
     const resNmHistory = (await nmHistory).getNonMpaUserHistory;
     setMints(resNmHistory.market_place_snapshots);
-    console.log("nm history", resNmHistory);
   }
 
   return (
