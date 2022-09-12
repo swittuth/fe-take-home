@@ -14,6 +14,7 @@ export const TransactionListing = () => {
   }, []);
 
   async function getTransactions() {
+    // retrieving data for user history
     const userHistory = await hyperClient.getUserHistory({
       condition: {
         userAddress: userAddress,
@@ -47,6 +48,7 @@ export const TransactionListing = () => {
         </p>
       </Badge>
 
+      {/* rendering card with transaction information */}
       {transactions.map((obj) => (
         <motion.div
           initial={{ paddingTop: "100px" }}

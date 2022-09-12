@@ -22,6 +22,7 @@ export const ActivityChart = () => {
   }, []);
 
   async function getActivity() {
+    // getting data to render on donut chart
     const listingHistory = await hyperClient.getUserHistory({
       condition: {
         userAddress: userAddress,
@@ -36,6 +37,8 @@ export const ActivityChart = () => {
       },
     });
     const resultTransaction = transactionHistory.getUserHistory;
+
+    // configuring data for donut chart
     const tempData = {
       labels: ["Listings", "Buyings"],
       datasets: [
@@ -81,6 +84,7 @@ export const ActivityChart = () => {
           justifyContent="center"
           alignItems="center"
         >
+          {/* conditional rendering between skeleton and donut chart - placeholder while donut chart gets data */}
           {Object.keys(data).length > 0 ? (
             <Doughnut data={data} options={options} />
           ) : (
