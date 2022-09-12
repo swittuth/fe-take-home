@@ -23,8 +23,9 @@ Knowing a wallet's information, especially top ranking wallet, can help buyer ma
 1. Git clone the repo
 2. Run ```npm install``` in the terminal
 3. Run ```npm start``` in the terminal
-4. Input wallet address 
-5. Dashboard displays
+4. Locate to ```localhost:3000``` on browser 
+5. Input wallet address 
+6. Dashboard displays
 
 Example of wallet address to run:
 1. FwugPyZWSbUrA6JntH9RvpyLMaCdtwCTVv1sbLxBXW8a
