@@ -8,7 +8,6 @@ import { InfoContext } from "../infocontext";
 import { SearchBox } from "../components/searchbox/SearchBox";
 
 const Index = () => {
-  const { colorMode } = useColorMode();
   const [userAddress, setUserAddress] = useState(
     "FwugPyZWSbUrA6JntH9RvpyLMaCdtwCTVv1sbLxBXW8a"
   );
@@ -26,7 +25,10 @@ const Index = () => {
         {userAddress ? (
           <DashboardContainer height="100%" width="100%" />
         ) : (
-          <SearchBox />
+          <>
+            <DarkModeSwitch></DarkModeSwitch>
+            <SearchBox />
+          </>
         )}
       </InfoContext.Provider>
     </Container>

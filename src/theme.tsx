@@ -3,6 +3,8 @@ import { extendTheme } from "@chakra-ui/react";
 const fonts = { mono: `'Menlo', monospace` };
 
 const theme = extendTheme({
+  initialColorMode: "dark",
+  useSystemColorMode: false,
   breakpoints: {
     sm: "40em",
     md: "52em",
