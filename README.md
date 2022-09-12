@@ -18,3 +18,14 @@ Knowing a wallet's information, especially top ranking wallet, can help buyer ma
 
 ### Light Mode
 ![Light-Mode](https://github.com/swittuth/fe-take-home/blob/quoc-do-candidate/light_mode.gif)
+
+## To Start
+1. Git clone the repo
+2. Run ```npm install``` in the terminal
+3. Run ```npm start``` in the terminal
+4. Input wallet address 
+5. Dashboard displays
+
+Example of wallet address to run:
+1. FwugPyZWSbUrA6JntH9RvpyLMaCdtwCTVv1sbLxBXW8a
+2. 4ZCiGakZJy5aJsLpMBNBNwyrmNCCSCzukzhaPzzd4d7v
