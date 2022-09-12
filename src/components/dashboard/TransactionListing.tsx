@@ -1,4 +1,4 @@
-import { Flex, Box, Badge } from "@chakra-ui/react";
+import { Flex, Badge } from "@chakra-ui/react";
 import { useEffect, useContext, useState } from "react";
 import { MarketPlaceActionEnum } from "hyperspace-client-js/dist/sdk";
 import { InfoContext } from "../../infocontext";
