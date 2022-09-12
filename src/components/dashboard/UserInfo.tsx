@@ -9,7 +9,7 @@ import { SOL_USD } from "../../soltousd";
 export const UserInfo = () => {
   const { userAddress, hyperClient, setUserAddress } = useContext(InfoContext);
   const [loading, setLoading] = useState(true);
-  const [walletInfo, setWalletInfo] = useState("");
+  const [walletInfo, setWalletInfo] = useState<any>({});
   const [displayDollar, setDisplayDollar] = useState(false);
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export const UserInfo = () => {
           </Skeleton>
         ) : (
           <Badge
-            shadow={"2xl"}
+            shadow="2xl"
             padding="5px"
             rounded="md"
             height="min-content"

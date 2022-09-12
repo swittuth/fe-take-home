@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { InfoContext } from "../../infocontext";
 import moment from "moment";
-import { Flex, Badge, Box } from "@chakra-ui/react";
+import { Flex, Badge, Box, Skeleton } from "@chakra-ui/react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -112,7 +112,13 @@ export const PortfolioChart = () => {
         height="100%"
       >
         <Box width="95%" height="90%">
-          <Line data={data} options={options} />
+          {Object.keys(data).length > 0 ? (
+            <Line data={data} options={options} />
+          ) : (
+            <Skeleton width="100%" height="100%">
+              placeholder
+            </Skeleton>
+          )}
         </Box>
       </Flex>
     </Flex>
