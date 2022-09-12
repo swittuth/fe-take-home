@@ -14,7 +14,7 @@ const options = {
 };
 
 export const ActivityChart = () => {
-  const { userAddress, hyperClient } = useContext(InfoContext);
+  const { userAddress, hyperClient, containerColor } = useContext(InfoContext);
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -57,7 +57,13 @@ export const ActivityChart = () => {
   }
 
   return (
-    <Flex rounded="lg" background="#171A2799" height="100%" direction="column">
+    <Flex
+      rounded="lg"
+      background={containerColor}
+      height="100%"
+      direction="column"
+      boxShadow="xl"
+    >
       <Badge
         position="relative"
         width="100%"

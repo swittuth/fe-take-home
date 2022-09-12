@@ -1,4 +1,4 @@
-import { useColorMode } from "@chakra-ui/react";
+import { useColorModeValue } from "@chakra-ui/react";
 import { useState } from "react";
 import { Container } from "../components/Container";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
@@ -8,6 +8,10 @@ import { InfoContext } from "../infocontext";
 import { SearchBox } from "../components/searchbox/SearchBox";
 
 const Index = () => {
+  const containerColor = useColorModeValue("#fbf9fa", "#171A2799");
+  const cardColor = useColorModeValue("#cde8f6", "#1A365D");
+  const cardTextColor = useColorModeValue("#393e6f", "#bdf9f7");
+
   const [userAddress, setUserAddress] = useState(
     "FwugPyZWSbUrA6JntH9RvpyLMaCdtwCTVv1sbLxBXW8a"
   );
@@ -20,13 +24,20 @@ const Index = () => {
   return (
     <Container height="100vh" width="100vw" padding="10px">
       <InfoContext.Provider
-        value={{ userAddress, hyperClient, setUserAddress }}
+        value={{
+          userAddress,
+          hyperClient,
+          setUserAddress,
+          containerColor,
+          cardColor,
+          cardTextColor,
+        }}
       >
         {userAddress ? (
           <DashboardContainer height="100%" width="100%" />
         ) : (
           <>
-            <DarkModeSwitch></DarkModeSwitch>
+            <DarkModeSwitch position="fixed" right={4} top={4}></DarkModeSwitch>
             <SearchBox />
           </>
         )}

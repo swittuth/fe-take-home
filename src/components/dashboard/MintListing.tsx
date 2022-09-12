@@ -6,7 +6,7 @@ import { NonMarketPlaceActionEnum } from "hyperspace-client-js/dist/sdk";
 import { motion } from "framer-motion";
 
 export const MintListing = () => {
-  const { userAddress, hyperClient } = useContext(InfoContext);
+  const { userAddress, hyperClient, containerColor } = useContext(InfoContext);
   const [mints, setMints] = useState<any[]>([]);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const MintListing = () => {
 
   return (
     <Flex
-      background="#171A2799"
+      background={containerColor}
       rounded="lg"
       direction={"column"}
       position="relative"
@@ -34,6 +34,7 @@ export const MintListing = () => {
       width="100%"
       gap="10px"
       overflow={"auto"}
+      boxShadow="xl"
     >
       <Badge
         width="100%"

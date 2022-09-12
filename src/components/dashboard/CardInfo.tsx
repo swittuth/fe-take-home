@@ -3,6 +3,8 @@ import { Flex, FlexProps, Avatar, Text } from "@chakra-ui/react";
 import moment from "moment";
 import { round } from "lodash";
 import { SOL_USD } from "../../soltousd";
+import { useContext } from "react";
+import { InfoContext } from "../../infocontext";
 
 type transactionType = {
   project_name: string;
@@ -20,15 +22,14 @@ export const CardInfo: FC<transactionType & FlexProps> = ({
   marginRight,
 }) => {
   const [displayDollar, setDisplayDollar] = useState(false);
+  const { cardColor, cardTextColor } = useContext(InfoContext);
   return (
     <Flex
       direction="row"
       alignItems="center"
       rounded="lg"
-      border="1px"
       padding="8px"
-      background="#1A365D"
-      borderColor="black"
+      background={cardColor}
       fontWeight="semibold"
       onMouseEnter={() => {
         setDisplayDollar(true);
@@ -37,11 +38,11 @@ export const CardInfo: FC<transactionType & FlexProps> = ({
         setDisplayDollar(false);
       }}
       _hover={{
-        backgroundColor: "#36485e",
+        backgroundColor: "#9d8f8f",
         cursor: "pointer",
         transition: "0.2s",
       }}
-      color="#bdf9f7"
+      color={cardTextColor}
       marginLeft={marginLeft}
       marginRight={marginRight}
     >
