@@ -13,3 +13,8 @@ Knowing a wallet's information, especially top ranking wallet, can help buyer ma
 * Lodash
 
 ## DEMO 
+### Dark Mode
+![Dark-Mode](https://github.com/swittuth/fe-take-home/blob/quoc-do-candidate/dark_mode.gif)
+
+### Light Mode
+![Light-Mode](https://github.com/swittuth/fe-take-home/blob/quoc-do-candidate/light_mode.gif)
