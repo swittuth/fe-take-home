@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export const MintListing = () => {
   const { userAddress, hyperClient } = useContext(InfoContext);
-  const [mints, setMints] = useState([]);
+  const [mints, setMints] = useState<any[]>([]);
 
   useEffect(() => {
     getMinting();

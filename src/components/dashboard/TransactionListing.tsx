@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export const TransactionListing = () => {
   const { userAddress, hyperClient } = useContext(InfoContext);
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState<any[]>([]);
 
   useEffect(() => {
     getTransactions();

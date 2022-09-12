@@ -40,22 +40,9 @@ const options = {
 };
 
 let labels: string[] = [];
-
-let data = {
-  labels,
-  datasets: [
-    {
-      label: "",
-      data: labels.map(() => Math.random() * 1000),
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-  ],
-};
-
 export const PortfolioChart = () => {
   const { userAddress, hyperClient } = useContext(InfoContext);
-  const [renderData, setRenderData] = useState({});
+  const [data, setData] = useState({});
 
   useEffect(() => {
     getWalletHistory();
@@ -77,7 +64,7 @@ export const PortfolioChart = () => {
     }
     labels.reverse();
 
-    data = {
+    const tempData = {
       labels,
       datasets: [
         {
@@ -95,7 +82,7 @@ export const PortfolioChart = () => {
       ],
     };
     labels = [];
-    setRenderData(data);
+    setData(tempData);
   }
 
   return (
